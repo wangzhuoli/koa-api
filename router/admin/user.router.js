@@ -1,10 +1,11 @@
-const KoaRouter = require("koa-router");
-const { register } = require("../../controller/user.controller");
+import KoaRouter from "koa-router";
+import { register } from "../../controller/user.controller.js";
+import { userValidator, verifyUser } from "../../middleware/user.middleware.js";
 
 const router = new KoaRouter({
   prefix: "/users",
 });
 
-router.post("/register", register);
+router.post("/register", userValidator, verifyUser, register);
 
-module.exports = router;
+export default router;

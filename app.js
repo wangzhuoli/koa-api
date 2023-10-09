@@ -1,15 +1,15 @@
-const Koa = require("koa");
-const { APP_PORT } = require("./config/config");
-const { koaBody } = require("koa-body");
+import Koa from "koa";
+import { APP_PORT } from "./config/config.js";
+import { koaBody } from "koa-body";
+import adminRouter from "./router/admin/app.router.js";
 
-const serve = new Koa();
+const app = new Koa();
 
-const adminRouter = require("./router/admin/app.router");
+app.use(koaBody());
 
-serve.use(koaBody());
-serve.use(adminRouter.routes());
-serve.use(adminRouter.allowedMethods());
+app.use(adminRouter.routes());
+app.use(adminRouter.allowedMethods());
 
-serve.listen(APP_PORT, () => {
+app.listen(APP_PORT, () => {
   console.log(`serve running on http://localhost:${APP_PORT}`);
 });

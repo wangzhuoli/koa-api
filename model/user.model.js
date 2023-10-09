@@ -1,6 +1,6 @@
-const { DataTypes } = require("sequelize");
+import { DataTypes } from "sequelize";
 
-const sequelize = require("../db/sequelize");
+import sequelize from "../db/sequelize.js";
 
 const User = sequelize.define("user", {
   name: {
@@ -18,4 +18,4 @@ const User = sequelize.define("user", {
 
 User.sync({ force: true }).then();
 
-module.exports = User;
+export default User;

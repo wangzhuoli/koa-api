@@ -1,14 +1,12 @@
-const { Sequelize } = require("sequelize");
+import { Sequelize } from "sequelize";
 
-const {
+import {
   DB_HOST,
   DB_USERNAME,
   DB_PASSWORD,
   DB_PORT,
   DB_NAME,
-} = require("../config/config");
-
-console.log(DB_NAME, DB_USERNAME, DB_PASSWORD, DB_HOST, DB_PORT);
+} from "../config/config.js";
 
 const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {
   host: DB_HOST,
@@ -26,4 +24,4 @@ sequelize
     console.log("数据库连接失败");
   });
 
-module.exports = sequelize;
+export default sequelize;

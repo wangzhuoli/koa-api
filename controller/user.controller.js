@@ -1,10 +1,13 @@
-const { createUser } = require("../service/user.service");
+import { createUser } from "../service/user.service.js";
 
-class UserController {
-  async register(ctx, next) {
-    const { name, password } = ctx.request.body;
-    ctx.body = await createUser({ name, password });
-  }
-}
-
-module.exports = new UserController();
+export const register = async (ctx, next) => {
+  const { name, password } = ctx.request.body;
+  const result = await createUser({ name, password });
+  ctx.body = {
+    message: "创建成功",
+    data: {
+      id: result.id,
+      name: result.name,
+    },
+  };
+};
