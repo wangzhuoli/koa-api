@@ -20,4 +20,9 @@ router.post("/register", registerValidator, verifyUser, register);
 // 用户登录
 router.post("/login", loginValidator, verifyLogin, login);
 
+// 用户列表
+router.get("/list", (ctx, next) => {
+  ctx.body = "users list ---";
+});
+
 export default router;
