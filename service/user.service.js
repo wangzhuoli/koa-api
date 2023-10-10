@@ -1,4 +1,4 @@
-import User from "../model/user.model.js";
+import User from "#model/user.model.js";
 
 export const createUser = async (params) => {
   const { name, password } = params;

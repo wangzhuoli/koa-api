@@ -6,7 +6,7 @@ import {
   DB_PASSWORD,
   DB_PORT,
   DB_NAME,
-} from "../config/config.js";
+} from "#config/config.js";
 
 const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {
   host: DB_HOST,

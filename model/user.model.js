@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 
-import sequelize from "../db/sequelize.js";
+import sequelize from "#db/sequelize.js";
 
 const User = sequelize.define("user", {
   name: {
@@ -16,6 +16,6 @@ const User = sequelize.define("user", {
   },
 });
 
-User.sync({ force: true }).then();
+// User.sync({ force: true }).then();
 
 export default User;

@@ -1,4 +1,4 @@
-import { getUser } from "../service/user.service.js";
+import { getUser } from "#service/user.service.js";
 
 export const userValidator = async (ctx, next) => {
   const { name, password } = ctx.request.body;

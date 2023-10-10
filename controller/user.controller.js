@@ -1,4 +1,4 @@
-import { createUser } from "../service/user.service.js";
+import { createUser } from "#service/user.service.js";
 
 export const register = async (ctx, next) => {
   const { name, password } = ctx.request.body;

@@ -1,7 +1,7 @@
 import Koa from "koa";
-import { APP_PORT } from "./config/config.js";
+import { APP_PORT } from "#config/config.js";
 import { koaBody } from "koa-body";
-import adminRouter from "./router/admin/app.router.js";
+import adminRouter from "#router/admin/app.router.js";
 
 const app = new Koa();
 

@@ -18,5 +18,14 @@
     "nodemon": "^3.0.1",
     "prettier": "^3.0.3"
   },
-  "type": "module"
+  "type": "module",
+  "imports": {
+    "#config/*": "./config/*",
+    "#controller/*": "./controller/*",
+    "#middleware/*": "./middleware/*",
+    "#db/*": "./db/*",
+    "#router/*": "./router/*",
+    "#service/*": "./service/*",
+    "#model/*": "./model/*"
+  }
 }
