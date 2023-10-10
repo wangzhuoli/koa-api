@@ -3,12 +3,7 @@
  * **/
 import KoaRouter from "koa-router";
 import { register, login } from "#controller/user.controller.js";
-import {
-  registerValidator,
-  verifyUser,
-  loginValidator,
-  verifyLogin,
-} from "#middleware/user.middleware.js";
+import { registerValidator, verifyUser, loginValidator, verifyLogin } from "#middleware/user.middleware.js";
 
 const router = new KoaRouter({
   prefix: "/users",
