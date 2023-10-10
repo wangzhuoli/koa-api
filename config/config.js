@@ -27,3 +27,6 @@ export const MYSQL_PORT = process.env["MYSQL_PORT"];
 
 // 数据库名称
 export const DB_NAME = process.env["DB_NAME"];
+
+// jwt
+export const JWT_SECRET_KEY = "koa_token";
