@@ -1,3 +1,6 @@
+/**
+ * Admin路由入口文件
+ * **/
 import KoaRouter from "koa-router";
 import userRouter from "./user.router.js";
 

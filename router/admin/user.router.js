@@ -1,11 +1,14 @@
+/**
+ * 用户管理路由
+ * **/
 import KoaRouter from "koa-router";
 import { register } from "#controller/user.controller.js";
-import { userValidator, verifyUser } from "#middleware/user.middleware.js";
+import { registerValidator, verifyUser } from "#middleware/user.middleware.js";
 
 const router = new KoaRouter({
   prefix: "/users",
 });
 
-router.post("/register", userValidator, verifyUser, register);
+router.post("/register", registerValidator, verifyUser, register);
 
 export default router;

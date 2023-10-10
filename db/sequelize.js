@@ -1,17 +1,23 @@
-import { Sequelize } from "sequelize";
+/**
+ * 数据库连接配置文件
+ *
+ * 本文件负责创建和配置 Sequelize 实例，用于连接到 MySQL 数据库。
+ * 这个文件的主要作用是建立和管理数据库连接，以便在整个应用程序中执行数据库操作。
+ */
 
+import { Sequelize } from "sequelize";
 import {
-  DB_HOST,
-  DB_USERNAME,
-  DB_PASSWORD,
-  DB_PORT,
+  MYSQL_HOST,
+  MYSQL_USERNAME,
+  MYSQL_PASSWORD,
+  MYSQL_PORT,
   DB_NAME,
 } from "#config/config.js";
 
-const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {
-  host: DB_HOST,
+const sequelize = new Sequelize(DB_NAME, MYSQL_USERNAME, MYSQL_PASSWORD, {
+  host: MYSQL_HOST,
   dialect: "mysql",
-  port: DB_PORT,
+  port: MYSQL_PORT,
 });
 
 sequelize

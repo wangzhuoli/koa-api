@@ -1,6 +1,12 @@
-import { getUser } from "#service/user.service.js";
+/**
+ * 用户中间件
+ * **/
+import { findUser } from "#service/user.service.js";
 
-export const userValidator = async (ctx, next) => {
+/**
+ * 注册验证器
+ * **/
+export const registerValidator = async (ctx, next) => {
   const { name, password } = ctx.request.body;
   if (!name || !password) {
     ctx.status = 400;
@@ -13,9 +19,12 @@ export const userValidator = async (ctx, next) => {
   await next();
 };
 
+/**
+ * 核实用户是否存在
+ * **/
 export const verifyUser = async (ctx, next) => {
   const { name } = ctx.request.body;
-  const user = await getUser({ name });
+  const user = await findUser({ name });
   if (user) {
     ctx.status = 409;
     ctx.body = {
