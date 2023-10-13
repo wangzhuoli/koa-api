@@ -16,7 +16,7 @@ export const authenticate = async (ctx, next) => {
   if (whitelist.includes(url)) {
     await next();
   } else {
-    const { authorization } = ctx.request.header;
+    const { authorization = "" } = ctx.request.header;
     const token = authorization.replace("Bearer ", "");
     try {
       ctx.state.user = jwt.verify(token, JWT_SECRET_KEY);

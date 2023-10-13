@@ -8,9 +8,10 @@ import { clientError } from "#middleware/error.middleware.js";
  * 用户注册验证器
  * **/
 export const registerValidator = async (ctx, next) => {
-  const { name, password } = ctx.request.body;
-  if (!name || !password) {
-    clientError(ctx, null, { message: "用户名或密码不能为空", status: 400 });
+  ctx.checkBody("name").notEmpty("用户名不能为空");
+  ctx.checkBody("password").notEmpty("密码不能为空");
+  if (ctx.errors) {
+    clientError(ctx, ctx.errors, { message: "用户名或密码不能为空", status: 400 });
     return;
   }
   await next();
@@ -33,9 +34,10 @@ export const verifyUser = async (ctx, next) => {
  * 用户登录验证器
  * **/
 export const loginValidator = async (ctx, next) => {
-  const { name, password } = ctx.request.body;
-  if (!name || !password) {
-    clientError(ctx, null, { message: "用户名或密码不能为空", status: 400 });
+  ctx.checkBody("name").notEmpty("用户名不能为空");
+  ctx.checkBody("password").notEmpty("密码不能为空");
+  if (ctx.errors) {
+    clientError(ctx, ctx.errors, { message: "用户名或密码不能为空", status: 400 });
     return;
   }
   await next();

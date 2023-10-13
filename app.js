@@ -4,12 +4,16 @@
 import Koa from "koa";
 import { APP_PORT } from "#config/config.js";
 import { koaBody } from "koa-body";
+import KoaValidate from "koa-validate";
 import adminRouter from "#router/admin/app.router.js";
 
 const app = new Koa();
 
 // 使用koaBody
 app.use(koaBody());
+
+//
+KoaValidate(app);
 
 // 后台管理路由
 app.use(adminRouter.routes());
