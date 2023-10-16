@@ -5,7 +5,7 @@ import Koa from "koa";
 import { APP_PORT } from "#config/config.js";
 import { koaBody } from "koa-body";
 import KoaValidate from "koa-validate";
-import adminRouter from "#router/admin/app.router.js";
+import router from "#router/app.router.js";
 
 const app = new Koa();
 
@@ -16,8 +16,8 @@ app.use(koaBody());
 KoaValidate(app);
 
 // 后台管理路由
-app.use(adminRouter.routes());
-app.use(adminRouter.allowedMethods());
+app.use(router.routes());
+app.use(router.allowedMethods());
 
 app.listen(APP_PORT, () => {
   console.log(`serve running on http://localhost:${APP_PORT}`);

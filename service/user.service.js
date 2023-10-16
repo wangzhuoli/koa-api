@@ -1,5 +1,6 @@
 import User from "#model/user.model.js";
 import md5 from "md5";
+import { Op } from "sequelize";
 
 /**
  * 创建用户
@@ -34,4 +35,24 @@ export const findUser = async (params) => {
     attributes: ["id", "name"],
   });
   return result?.dataValues;
+};
+
+/**
+ * 查找用户
+ * @param {Object} params - 查询参数
+ * @param { Number } [params.page] - 页码
+ * @param { Number } [params.size] - 每页条数
+ * @param { String } [params.keyword] - 模糊查询
+ * **/
+export const findAllWithPagination = async (params) => {
+  const { page, size, keyword } = params;
+  const where = {};
+  if (keyword) {
+    // where.name = {
+    //   [Op.like]: `%${keyword}%`,
+    // };
+  }
+  const data = await User.findAll({ limit: size, offset: size * (page - 1), where });
+  const count = await User.count({ where });
+  return { data, count };
 };

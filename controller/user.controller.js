@@ -1,11 +1,11 @@
 /**
  * 用户控制器
  */
-import { createUser, findUser } from "#service/user.service.js";
+import { createUser, findUser, findAllWithPagination } from "#service/user.service.js";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET_KEY } from "#config/config.js";
 import { serverError } from "#middleware/error.middleware.js";
-import { responseWithoutPagination } from "#middleware/response.middleware.js";
+import { responseWithoutPagination, responseWithPagination } from "#middleware/response.middleware.js";
 
 /**
  * 用户注册
@@ -41,6 +41,20 @@ export const login = async (ctx, next) => {
       },
       { message: "登录成功" },
     );
+  } catch (error) {
+    serverError(ctx, error);
+  }
+};
+
+/**
+ * 用户列表（带分页信息）
+ * **/
+export const useListWithPagination = async (ctx, next) => {
+  const { page, size } = ctx.state.pagination;
+
+  try {
+    const { count, data } = await findAllWithPagination({ page, size });
+    responseWithPagination(ctx, data, { status: 200, message: "查询成功", count });
   } catch (error) {
     serverError(ctx, error);
   }

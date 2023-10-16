@@ -13,6 +13,5 @@ router.use(authenticate);
 
 // 用户路由
 router.use(userRouter.routes());
-router.use(userRouter.allowedMethods());
 
 export default router;
