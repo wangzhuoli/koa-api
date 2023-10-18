@@ -6,18 +6,13 @@
  */
 
 import { Sequelize } from "sequelize";
-import {
-  MYSQL_HOST,
-  MYSQL_USERNAME,
-  MYSQL_PASSWORD,
-  MYSQL_PORT,
-  DB_NAME,
-} from "#config/config.js";
+import { MYSQL_HOST, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_PORT, DB_NAME } from "#config/config.js";
 
 const sequelize = new Sequelize(DB_NAME, MYSQL_USERNAME, MYSQL_PASSWORD, {
   host: MYSQL_HOST,
   dialect: "mysql",
   port: MYSQL_PORT,
+  timezone: "+08:00", // 设置时区，例如 '+08:00' 表示东八区
 });
 
 sequelize

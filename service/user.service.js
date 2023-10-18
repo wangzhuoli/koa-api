@@ -1,6 +1,7 @@
 import User from "#model/user.model.js";
 import md5 from "md5";
 import { Op } from "sequelize";
+import dayjs from "#plugins/dayjs.js";
 
 /**
  * 创建用户
@@ -48,11 +49,16 @@ export const findAllWithPagination = async (params) => {
   const { page, size, keyword } = params;
   const where = {};
   if (keyword) {
-    // where.name = {
-    //   [Op.like]: `%${keyword}%`,
-    // };
+    where.name = {
+      [Op.like]: `%${keyword}%`,
+    };
   }
-  const data = await User.findAll({ limit: size, offset: size * (page - 1), where });
+  const data = await User.findAll({ limit: size, offset: size * (page - 1), where, attributes: ["id", "name", "createdAt", "updatedAt"] });
   const count = await User.count({ where });
-  return { data, count };
+  const formatData = data.map((i) => {
+    i.dataValues.createdAt = dayjs(i.dataValues.createdAt).format("YYYY-MM-DD HH:mm:ss");
+    i.dataValues.updatedAt = dayjs(i.dataValues.updatedAt).format("YYYY-MM-DD HH:mm:ss");
+    return i;
+  });
+  return { data: formatData, count };
 };

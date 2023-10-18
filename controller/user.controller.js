@@ -51,9 +51,10 @@ export const login = async (ctx, next) => {
  * **/
 export const useListWithPagination = async (ctx, next) => {
   const { page, size } = ctx.state.pagination;
+  const { keyword } = ctx.request.query;
 
   try {
-    const { count, data } = await findAllWithPagination({ page, size });
+    const { count, data } = await findAllWithPagination({ page, size, keyword });
     responseWithPagination(ctx, data, { status: 200, message: "查询成功", count });
   } catch (error) {
     serverError(ctx, error);

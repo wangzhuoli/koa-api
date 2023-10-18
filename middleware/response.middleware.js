@@ -23,8 +23,6 @@ export const responseWithPagination = (ctx, data, options = {}) => {
   const lastPage = Math.ceil(count / size);
   ctx.status = status;
 
-  console.log(data);
-
   ctx.body = {
     message,
     data: {
