@@ -7,13 +7,13 @@ import sequelize from "#src/db/sequelize.js";
 const User = sequelize.define("user", {
   name: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: false,
     unique: true,
     comment: "用户名，唯一",
   },
   password: {
     type: DataTypes.CHAR(64),
-    allowNull: true,
+    allowNull: false,
     comment: "密码",
   },
 });

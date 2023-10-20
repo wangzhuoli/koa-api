@@ -29,6 +29,18 @@ export const verifyUser = async (ctx, next) => {
   }
   await next();
 };
+/**
+ * 验证用户是否不存在
+ * **/
+export const verifyUserNotExist = async (ctx, next) => {
+  const { name } = ctx.request.body;
+  const user = await findUser({ name });
+  if (!user) {
+    clientError(ctx, null, { message: "用户不存在", status: 409 });
+    return;
+  }
+  await next();
+};
 
 /**
  * 用户登录验证器

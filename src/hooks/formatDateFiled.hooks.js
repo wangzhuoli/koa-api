@@ -1,6 +1,9 @@
 import dayjs from "#src/plugins/dayjs.js";
 
 export const formatDateFiled = (data) => {
+  if (!data) {
+    return;
+  }
   if (Array.isArray(data)) {
     // 处理查询结果中的多个记录
     data.forEach((item) => {
