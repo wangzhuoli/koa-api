@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon ./app.js"
+    "dev": "nodemon src/app.js"
   },
   "dependencies": {
     "dayjs": "^1.11.10",
@@ -24,13 +24,6 @@
   },
   "type": "module",
   "imports": {
-    "#config/*": "./config/*",
-    "#controller/*": "./controller/*",
-    "#middleware/*": "./middleware/*",
-    "#db/*": "./db/*",
-    "#router/*": "./router/*",
-    "#service/*": "./service/*",
-    "#plugins/*": "./plugins/*",
-    "#model/*": "./model/*"
+    "#src/*": "./src/*"
   }
 }

@@ -1,9 +1,9 @@
 /**
  * 用户鉴权中间件
  * **/
-import { JWT_SECRET_KEY } from "#config/config.js";
+import { JWT_SECRET_KEY } from "#src/config/config.js";
 import jwt from "jsonwebtoken";
-import { clientError } from "#middleware/error.middleware.js";
+import { clientError } from "#src/middleware/error.middleware.js";
 
 // 不需要登录鉴权的路由列表
 const whitelist = ["/admin/users/login", "/admin/users/register"];

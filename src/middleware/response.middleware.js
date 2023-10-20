@@ -27,10 +27,10 @@ export const responseWithPagination = (ctx, data, options = {}) => {
     message,
     data: {
       list: data,
-      count,
-      currentPage: page,
-      pageSize: size,
-      lastPage,
+      total: count,
+      current_page: page,
+      page_size: size,
+      last_page: lastPage,
     },
   };
 };

@@ -2,9 +2,9 @@
  * 用户管理路由
  * **/
 import KoaRouter from "koa-router";
-import { register, login, useListWithPagination } from "#controller/user.controller.js";
-import { registerValidator, verifyUser, loginValidator, verifyLogin } from "#middleware/user.middleware.js";
-import { paginateMiddleware } from "#middleware/paginate.middleware.js";
+import { register, login, useListWithPagination } from "#src/controller/user.controller.js";
+import { registerValidator, verifyUser, loginValidator, verifyLogin } from "#src/middleware/user.middleware.js";
+import { paginateMiddleware } from "#src/middleware/paginate.middleware.js";
 
 const router = new KoaRouter({
   prefix: "/users",

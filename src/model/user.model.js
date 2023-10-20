@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from "#db/sequelize.js";
+import sequelize from "#src/db/sequelize.js";
 
 /**
  * @description 用户模型

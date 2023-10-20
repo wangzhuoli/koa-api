@@ -2,7 +2,7 @@
  * 用户角色模型
  * **/
 import { DataTypes } from "sequelize";
-import sequelize from "#db/sequelize.js";
+import sequelize from "#src/db/sequelize.js";
 
 const Role = sequelize.define("role", {
   name: {

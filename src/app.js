@@ -2,10 +2,10 @@
  * 服务器入口文件
  * **/
 import Koa from "koa";
-import { APP_PORT } from "#config/config.js";
+import { APP_PORT } from "#src/config/config.js";
 import { koaBody } from "koa-body";
 import KoaValidate from "koa-validate";
-import router from "#router/app.router.js";
+import router from "#src/router/app.router.js";
 
 const app = new Koa();
 

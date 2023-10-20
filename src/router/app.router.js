@@ -1,5 +1,5 @@
 import KoaRouter from "koa-router";
-import adminRouter from "#router/admin/app.router.js";
+import adminRouter from "#src/router/admin/app.router.js";
 
 const router = new KoaRouter();
 

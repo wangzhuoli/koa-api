@@ -1,11 +1,11 @@
 /**
  * 用户控制器
  */
-import { createUser, findUser, findAllWithPagination } from "#service/user.service.js";
+import { createUser, findUser, findAllWithPagination } from "#src/service/user.service.js";
 import jwt from "jsonwebtoken";
-import { JWT_SECRET_KEY } from "#config/config.js";
-import { serverError } from "#middleware/error.middleware.js";
-import { responseWithoutPagination, responseWithPagination } from "#middleware/response.middleware.js";
+import { JWT_SECRET_KEY } from "#src/config/config.js";
+import { serverError } from "#src/middleware/error.middleware.js";
+import { responseWithoutPagination, responseWithPagination } from "#src/middleware/response.middleware.js";
 
 /**
  * 用户注册
@@ -51,10 +51,10 @@ export const login = async (ctx, next) => {
  * **/
 export const useListWithPagination = async (ctx, next) => {
   const { page, size } = ctx.state.pagination;
-  const { keyword } = ctx.request.query;
+  const { name } = ctx.request.query;
 
   try {
-    const { count, data } = await findAllWithPagination({ page, size, keyword });
+    const { count, data } = await findAllWithPagination({ page, size, name });
     responseWithPagination(ctx, data, { status: 200, message: "查询成功", count });
   } catch (error) {
     serverError(ctx, error);

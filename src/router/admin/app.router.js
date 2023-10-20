@@ -3,7 +3,7 @@
  * **/
 import KoaRouter from "koa-router";
 import userRouter from "./user.router.js";
-import { authenticate } from "#middleware/auth.middleware.js";
+import { authenticate } from "#src/middleware/auth.middleware.js";
 
 const router = new KoaRouter({
   prefix: "/admin",

@@ -1,8 +1,8 @@
 /**
  * 用户中间件
  * **/
-import { findUser } from "#service/user.service.js";
-import { clientError } from "#middleware/error.middleware.js";
+import { findUser } from "#src/service/user.service.js";
+import { clientError } from "#src/middleware/error.middleware.js";
 
 /**
  * 用户注册验证器
