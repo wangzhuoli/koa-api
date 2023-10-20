@@ -1,17 +1,38 @@
-/**
- * Admin路由入口文件
- * **/
 import KoaRouter from "koa-router";
-import userRouter from "./user.router.js";
 import { authenticate } from "#src/middleware/auth.middleware.js";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import fs from "fs";
 
-const router = new KoaRouter({
-  prefix: "/admin",
-});
+export const createRouter = async () => {
+  const router = new KoaRouter({
+    prefix: "/admin",
+  });
 
-router.use(authenticate);
+  router.use(authenticate);
 
-// 用户路由
-router.use(userRouter.routes());
+  const __dirname = dirname(fileURLToPath(import.meta.url));
 
-export default router;
+  // 创建一个数组来保存所有模块的导入 Promise
+  const importPromises = [];
+
+  fs.readdirSync(__dirname).forEach((file) => {
+    // 排除自己
+    if (file !== "app.router.js") {
+      const importPromise = import(`${__dirname}/${file}`)
+        .then(({ default: _router }) => {
+          router.use(_router.routes());
+        })
+        .catch((error) => {
+          console.error(`导入路由文件 ${file} 时发生错误：${error}`);
+        });
+
+      importPromises.push(importPromise);
+    }
+  });
+
+  // 使用 Promise.all 来等待所有模块成功导入
+  await Promise.all(importPromises);
+
+  return router;
+};
